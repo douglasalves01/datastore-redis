@@ -28,9 +28,3 @@ INSERT INTO mini_projeto_ebd2.products (
     230000,
     'Descrição do relógio de pulso'
 );
-
--- Comandos eventualmente úteis no MySQL
--- Criação de um usuário e permissão no schema
-/*
-CREATE USER IF NOT EXISTS 'ebd2'@'%' IDENTIFIED BY 'senhaqualquer';
-GRANT ALL ON mini_projeto_ebd2.* TO 'ebd2'@'%';*/

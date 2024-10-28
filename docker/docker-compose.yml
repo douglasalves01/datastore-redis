@@ -5,9 +5,10 @@ services:
     image: mysql:8.0
     container_name: mysql_container
     environment:
+      MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: mini_projeto_ebd2
       MYSQL_USER: admin
-      MYSQL_PASSWORD: 123
+      MYSQL_PASSWORD: admin
     ports:
       - "3306:3306"
     volumes:
