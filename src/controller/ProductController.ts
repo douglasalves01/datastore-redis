@@ -33,4 +33,11 @@ export class ProductController {
     res.type("application/json");
     res.send(product);
   }
+  static async delete(req: Request, res: Response) {
+    const id = parseInt(req.params.product_id);
+    await ProductController.productsRepo.delete(id);
+    res.statusCode = 200;
+    res.type("application/json");
+    res.send("exclusão realizada com sucesso!");
+  }
 }

@@ -103,9 +103,17 @@ export class ProductsRepository {
       conn.query<ResultSetHeader>(
         "delete from products where id = ?",
         [product_id],
-        (err, res) => {
-          if (err) reject(err);
-          else resolve(res.affectedRows);
+        async (err, res) => {
+          if (err) {
+            reject(err);
+          } else {
+            try {
+              await this.updateCache(); // Atualiza o cache após a atualização
+              resolve(res.affectedRows); // Retorna o produto atualizado
+            } catch (error) {
+              reject(error);
+            }
+          }
         }
       );
     });
