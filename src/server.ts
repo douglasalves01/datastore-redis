@@ -1,7 +1,8 @@
 import express from "express";
 import { Request, Response, Router } from "express";
-import { ProductsRepository } from "./ProductsRepository";
-import { runSQLDump } from "./loadData";
+import { ProductsRepository } from "./repositories/ProductsRepository";
+import { runSQLDump } from "./db/loadData";
+import { productRouter } from "./routes/ProductRoutes";
 const app = express();
 const port = 3000;
 const routes = Router();
@@ -13,19 +14,12 @@ routes.get("/", (req: Request, res: Response) => {
   res.send("Funcionando...");
 });
 
-routes.get("/getAllProducts", async (req: Request, res: Response) => {
-  // obter todos os produtos.
-  const products = await productsRepo.getAll();
-  res.statusCode = 200;
-  res.type("application/json");
-  res.send(products);
-});
-
 // aplicar as rotas na aplicação web backend.
 app.use(routes);
-
+app.use("/", productRouter);
 async function startServer() {
   await runSQLDump();
+  await productsRepo.cacheAllProducts();
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });

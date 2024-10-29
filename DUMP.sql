@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS mini_projeto_ebd2;
 CREATE DATABASE mini_projeto_ebd2;
-
+USE mini_projeto_ebd2;
 DROP TABLE IF EXISTS mini_projeto_ebd2.products;
 CREATE TABLE mini_projeto_ebd2.products(
 	ID INT not null primary key auto_increment,
