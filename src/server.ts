@@ -8,6 +8,7 @@ const port = 3000;
 const routes = Router();
 
 const productsRepo = new ProductsRepository();
+app.use(express.json()); //interpretar JSON no corpo da requisição
 
 routes.get("/", (req: Request, res: Response) => {
   res.statusCode = 200;

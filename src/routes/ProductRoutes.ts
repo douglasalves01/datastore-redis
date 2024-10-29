@@ -4,3 +4,5 @@ export const productRouter = express.Router();
 
 productRouter.get("/getAllProducts", ProductController.getAll);
 productRouter.get("/getById/:product_id", ProductController.getById);
+productRouter.post("/create", ProductController.create);
+productRouter.put("/update/:product_id", ProductController.update);
