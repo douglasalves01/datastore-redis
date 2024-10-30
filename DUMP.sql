@@ -3,16 +3,16 @@ CREATE DATABASE mini_projeto_ebd2;
 USE mini_projeto_ebd2;
 DROP TABLE IF EXISTS mini_projeto_ebd2.products;
 CREATE TABLE mini_projeto_ebd2.products(
-	ID INT not null primary key auto_increment,
-    NAME varchar(50) not null,
-    PRICE decimal(10,2) not null default 0,
-    DESCRIPTION varchar(500) not null
+	id INT not null primary key auto_increment,
+    name varchar(50) not null,
+    price decimal(10,2) not null default 0,
+    description varchar(500) not null
 );
 
 INSERT INTO mini_projeto_ebd2.products (
-	NAME,
-    PRICE,
-    DESCRIPTION
+	name,
+    price,
+    description
 ) VALUES (
 	'ROLEX SUBMARINER',
     12000,
@@ -20,9 +20,9 @@ INSERT INTO mini_projeto_ebd2.products (
 );
 
 INSERT INTO mini_projeto_ebd2.products (
-	NAME,
-    PRICE,
-    DESCRIPTION
+	name,
+    price,
+    description
 ) VALUES (
 	'ROLEX DAYTONA',
     230000,

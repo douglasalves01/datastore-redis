@@ -7,8 +7,9 @@ export class ProductsRepository {
   private static redisKey = "products"; // Chave única
 
   async cacheAllProducts(): Promise<void> {
-    const products = await this.getAll();
+    const products = await this.getAll(); //busca a função para pegar dados do banco
     await redisClient.set(
+      //gera primeiro carregamento do cache
       ProductsRepository.redisKey,
       JSON.stringify(products)
     );
@@ -48,7 +49,9 @@ export class ProductsRepository {
 
   async getById(product_id: number): Promise<Product | undefined> {
     const products = await this.getAll();
-    return products.find((product) => product.id === product_id);
+    const foundProduct = products.find((product) => product.id === product_id);
+
+    return foundProduct; // Retorne o produto encontrado
   }
 
   async create(p: Product): Promise<Product> {
@@ -87,7 +90,7 @@ export class ProductsRepository {
           } else {
             try {
               await this.updateCache(); // Atualiza o cache após a atualização
-              const updatedProduct = await this.getById(p.id!);
+              const updatedProduct = await this.getById(p.id!); //busca produto que acabou de ser atualizado
               resolve(updatedProduct); // Retorna o produto atualizado
             } catch (error) {
               reject(error);
